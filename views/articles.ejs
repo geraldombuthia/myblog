@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="/public/style.css">
+  <meta name="description" content="<%= doc.description %>">
+</head>
+
+<body>
+  <header id="home">
+    <h1>Gerald Mbuthia</h1>
+    <p class="desc">Discover tech</p>
+  </header>
+  <section id="read">
+    <div class="read">
+      <div class="date-time">
+        <div class="date"><%= new Date(doc.created).toLocaleDateString() %></div>
+        <div class="tag"> #<%= doc.tags %></div>
+        <!-- <div class="time"> <%= new Date(doc.created).toLocaleTimeString() %></div> -->
+      </div>
+      <h1 class="head-title"><%= doc.title %></h1>
+      <img src="/public/image/workdesk.jpg"" alt="" class=" article-img">
+      <div class="read-article">
+        <%= doc.article %>
+      </div>
+    </div>
+  </section>
+  <!-- Call to action i.e  follow or share on socialmedia, comments -->
+</body>
+
+</html>

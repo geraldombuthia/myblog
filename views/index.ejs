@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="/public/style.css" />
+</head>
+
+<body>
+  <header id="home">
+    <h1>Gerald Mbuthia</h1>
+    <p class="desc">Discover tech</p>
+  </header>
+  <section id="read">
+    <% result.forEach(article => { %>
+    <div class="article">
+      <img src="/public/image/workdesk.jpg"" alt="" class="image">
+      <div class="details">
+        <h3 class="title"><%= article.title %></h3>
+        <div class="description"><%= article.description %></div>
+        <div class="date-time time-font">
+          <div class="date"><%= new Date(article.created).toLocaleDateString() %></div>
+          <div class="time"> <%= new Date(article.created).toLocaleTimeString() %></div>
+        </div>
+
+        <a href="/article/<%= article._id  %>" class="more">Read More</a>
+      </div>
+    </div>
+
+    <% }) %>
+  </section>
+  <aside></aside>
+  <footer></footer>
+</body>
+
+</html>

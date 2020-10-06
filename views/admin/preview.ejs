@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="/public/style.css" />
+</head>
+
+<body>
+  <header id="home">
+    <h1>Gerald Mbuthia</h1>
+    <p class="desc">Discover tech</p>
+  </header>
+  <nav id="nav-preview">
+    <div class="d-inline btnpad" id="d-inline">
+      <div class="button-group">
+        <a href="/admin" class="more">Back</a>
+        <a href="/admin/article/edit/<%= doc._id %>" class="edit">Edit</a>
+      </div>
+
+      <form action="/admin/article/<%= doc._id %>?_method=DELETE" method="POST" class="d-inline">
+        <button type="submit" class="deletebtn">Delete</button>
+      </form>
+    </div>
+  </nav>
+  <section id="preview">
+    <div class="read">
+      <div class="date-time" id="date-time">
+        <div class="date"><%= new Date(doc.created).toLocaleDateString() %></div>
+        <div class="tag">#<%= doc.tags %></div>
+
+        <!-- <div class="time"> <%= new Date(doc.created).toLocaleTimeString() %></div> -->
+      </div>
+      <h1 class="head-title"><%= doc.title %></h1>
+      <img src="/public/image/workdesk.jpg"" alt="" class=" article-img">
+      <div class="read-article">
+        <%= doc.article %>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>
