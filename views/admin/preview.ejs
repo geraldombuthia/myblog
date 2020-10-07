@@ -12,19 +12,20 @@
   <header id="home">
     <h1>Gerald Mbuthia</h1>
     <p class="desc">Discover tech</p>
-  </header>
-  <nav id="nav-preview">
-    <div class="d-inline btnpad" id="d-inline">
-      <div class="button-group">
-        <a href="/admin" class="more">Back</a>
-        <a href="/admin/article/edit/<%= doc._id %>" class="edit">Edit</a>
+    <nav >
+      <div class="d-inline btnpad" id="d-inline">
+        <div class="button-group pad">
+          <a href="/admin" class="more" id="backbtn">Home</a>
+          <a href="/admin/article/edit/<%= doc._id %>" class="edit" id="editbtn">Edit</a>
+        </div>
+    
+        <form action="/admin/article/<%= doc._id %>?_method=DELETE" method="POST" class="d-inline">
+          <button type="submit" class="deletebtn" id="deletebtn">Delete</button>
+        </form>
       </div>
-
-      <form action="/admin/article/<%= doc._id %>?_method=DELETE" method="POST" class="d-inline">
-        <button type="submit" class="deletebtn">Delete</button>
-      </form>
-    </div>
-  </nav>
+    </nav>
+  </header>
+  
   <section id="preview">
     <div class="read">
       <div class="date-time" id="date-time">

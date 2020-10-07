@@ -113,7 +113,10 @@ a {
   margin: 0 auto;
   line-height: 1.5em;
 }
-
+/* edit.ejs */
+.editbut{
+  margin-left: 2em;
+}
 /* New.ejs */
 .form {
   display: flex;
@@ -122,11 +125,13 @@ a {
 }
 label {
   font-size: large;
-  margin-left: 0.6em;
+  margin-left: 0.8em;
+  font-weight: 600;
 }
 input,
 textarea {
-  margin-top: 1em;
+  font-size: 18px;
+  /* margin-top: 1em; */
   max-width: 40rem;
   padding: 1em;
   border-radius: 0.5em;
@@ -177,11 +182,12 @@ nav > a {
 }
 .more {
   margin-right: 1em;
+  
 }
 .button-group {
   display: flex;
   flex-direction: row;
-  margin-left: 1em;
+  justify-content: space-between;
 }
 /* preview.ejs */
 #nav-preview {
@@ -192,6 +198,14 @@ nav > a {
   flex-direction: row;
   justify-content: space-between;
 }
+#backbtn, #editbtn{
+  color: white;
+}
+ .pad + form{
+  padding-right: 1em;
+  margin-right: 1em;
+}
+
 @media only screen and (max-width: 600px) {
   .read-article{
     font-size: 0.9em;

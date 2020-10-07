@@ -1,12 +1,14 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const MongoClient = require("mongodb").MongoClient;
-var ObjectId = require("mongodb").ObjectID;
+const ObjectId = require("mongodb").ObjectID;
 const methodOverride = require("method-override");
+const helmet = require(helmet);
 const app = express();
 
 app.set("view engine", "ejs");
 
+app.use(helmet())
 app.use("/public", express.static(process.cwd() + "/public"));
 app.use(methodOverride("_method"));
 app.use(bodyParser.urlencoded({ extended: true }));
