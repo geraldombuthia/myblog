@@ -1,14 +1,20 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const marked = require("marked");
+const createDOMPurify = require("dompurify");
+const { JSDOM } = require("jsdom");
+const window = new JSDOM("").window;
+const DOMPurify = createDOMPurify(window);
 const MongoClient = require("mongodb").MongoClient;
 const ObjectId = require("mongodb").ObjectID;
 const methodOverride = require("method-override");
-const helmet = require(helmet);
+const helmet = require("helmet");
 const app = express();
 
 app.set("view engine", "ejs");
 
-app.use(helmet())
+// 
+
 app.use("/public", express.static(process.cwd() + "/public"));
 app.use(methodOverride("_method"));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -30,8 +36,10 @@ app.get("/", (req, res) => {
           .find({})
           .sort({ "created": -1 })
           .toArray(function (err, result) {
+            console.log(result);
             if (err) throw err;
             res.render("./index", { result: result });
+            
           });
       }
     }
@@ -143,12 +151,13 @@ app.put("/admin/articles/:id", (req, res) => {
   const { id } = req.params;
   const { title, description, article, tags } = req.body;
   const newUpdated = {
-    title,
-    description,
-    article,
+    title: title,
+    description: description,
+    article: DOMPurify.sanitize(marked(article)),
     tags: tags.split(","),
     updated: Date.now(),
   };
+  console.log(newUpdated)
   MongoClient.connect(
     "mongodb+srv://advancednodedb:a@cluster0.casky.mongodb.net/<dbname>?retryWrites=true&w=majority",
     {
@@ -206,9 +215,9 @@ app.get("/admin/new", (req, res) => {
 app.post("/admin/new/post", (req, res) => {
   const { title, description, article, tags } = req.body;
   const newArticle = {
-    title,
-    description,
-    article,
+    title: title,
+    description: description,
+    article: DOMPurify.sanitize(marked(article)),
     tags: tags.split(","),
     created: Date.now(),
     updated: Date.now(),
